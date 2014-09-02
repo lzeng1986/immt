@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CE3B8C68-4144-4CE4-A919-C39CEAC07484}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LazyBones</RootNamespace>
+    <AssemblyName>LazyBones</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\LazyBones.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AD\ADDatabase.cs" />
+    <Compile Include="AD\ADHelper.cs" />
+    <Compile Include="AD\ADQuery.cs" />
+    <Compile Include="AD\ADQueryProvider.cs" />
+    <Compile Include="AD\ADUser.cs" />
+    <Compile Include="AD\ADUserDatabase.cs" />
+    <Compile Include="AD\Enums.cs" />
+    <Compile Include="AD\Exceptions.cs" />
+    <Compile Include="AuthorAttribute.cs" />
+    <Compile Include="Basic\Authenticator.cs" />
+    <Compile Include="Basic\BasicDataType.cs" />
+    <Compile Include="Basic\EntityConverter.cs" />
+    <Compile Include="Basic\Data\IDataSource.cs" />
+    <Compile Include="Basic\Identity.cs" />
+    <Compile Include="Basic\Mediator.cs" />
+    <Compile Include="Basic\OpResult.cs" />
+    <Compile Include="Basic\ResAttribute.cs" />
+    <Compile Include="Basic\Role.cs" />
+    <Compile Include="Basic\RoleRes.cs" />
+    <Compile Include="Basic\SecurityManager.cs" />
+    <Compile Include="Basic\User.cs" />
+    <Compile Include="Basic\UserRole.cs" />
+    <Compile Include="Collection\BinaryTreeSet.cs" />
+    <Compile Include="Collection\CircularQueue.cs" />
+    <Compile Include="Collection\IDuplexEnumerator.cs" />
+    <Compile Include="Collection\IRBNodeHost.cs" />
+    <Compile Include="Collection\RBNode.cs" />
+    <Compile Include="Collection\RBTreeEnumerator.cs" />
+    <Compile Include="Collection\RBTreeSet.cs" />
+    <Compile Include="Collection\TreeSet.cs" />
+    <Compile Include="Communication\AppSessionFactory.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpBinding.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpClient.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpConfig.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpDirectory.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpFileSystem.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpPolicy.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpProtocol.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpUser.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpServer.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpSession.cs" />
+    <Compile Include="Communication\Apps\Ftp\UserPermissions.cs" />
+    <Compile Include="Communication\Apps\NfsV2\BadProcedureException.cs" />
+    <Compile Include="Communication\Apps\NfsV2\MountExporter.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsUser.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsV2Binding.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsV2Message.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsV2Server.cs" />
+    <Compile Include="Communication\Apps\NfsV2\PortMapperManager.cs" />
+    <Compile Include="Communication\Apps\NfsV2\RpcV2Protocol.cs" />
+    <Compile Include="Communication\Apps\NfsV2\RpcV2Server.cs" />
+    <Compile Include="Communication\Apps\NfsV2\RpcV2Session.cs" />
+    <Compile Include="Communication\Channels\ILBChannelFactory.cs" />
+    <Compile Include="Communication\Channels\ChannelBase.cs" />
+    <Compile Include="Communication\Channels\ChannelListenerBase.cs" />
+    <Compile Include="Communication\Channels\ConnectionEventArgs.cs" />
+    <Compile Include="Communication\Channels\ILBChannel.cs" />
+    <Compile Include="Communication\Channels\ILBChannelListener.cs" />
+    <Compile Include="Communication\Channels\ILBChannelListenerFactory.cs" />
+    <Compile Include="Communication\Channels\NetworkStreamChannel.cs" />
+    <Compile Include="Communication\Channels\SchemeAttribute.cs" />
+    <Compile Include="Communication\Client\ClientReConnecter.cs" />
+    <Compile Include="Communication\Client\IClient.cs" />
+    <Compile Include="Communication\Client\LBClientBuilder.cs" />
+    <Compile Include="Communication\Config\IConfig.cs" />
+    <Compile Include="Communication\Config\ServerTimeouts.cs" />
+    <Compile Include="Communication\ErrorEventArgs.cs" />
+    <Compile Include="Communication\IAppServer.cs" />
+    <Compile Include="Communication\IAppSession.cs" />
+    <Compile Include="Communication\ICommunicationTimeouts.cs" />
+    <Compile Include="Communication\LBBinding.cs" />
+    <Compile Include="Communication\Messages\RemoteInvokeMessage.cs" />
+    <Compile Include="Communication\Messengers\IMessenger.cs" />
+    <Compile Include="Communication\Messengers\QueueMessenger.cs" />
+    <Compile Include="Communication\Messengers\RequestResponseMessenger.cs" />
+    <Compile Include="Communication\OperationContext.cs" />
+    <Compile Include="Communication\Protocols\BinarySerializationProtocol.cs" />
+    <Compile Include="Communication\Protocols\ILBProtocol.cs" />
+    <Compile Include="Communication\Security\CredentialType.cs" />
+    <Compile Include="Communication\Security\IAuthenticator.cs" />
+    <Compile Include="Communication\Security\NegotiateBinding.cs" />
+    <Compile Include="Communication\Security\NegotiateChannelAsClient.cs" />
+    <Compile Include="Communication\Security\NegotiateChannelAsServer.cs" />
+    <Compile Include="Communication\Security\SecurityBindingFactory.cs" />
+    <Compile Include="Communication\Security\SecurityContext.cs" />
+    <Compile Include="Communication\Security\SslBinding.cs" />
+    <Compile Include="Communication\Security\SslChannelAsClient.cs" />
+    <Compile Include="Communication\Security\SslChannelAsServer.cs" />
+    <Compile Include="Communication\Channels\StreamChannel.cs" />
+    <Compile Include="Communication\Channels\TcpChannel.cs" />
+    <Compile Include="Communication\Channels\TcpChannelListener.cs" />
+    <Compile Include="Communication\Channels\UdpChannel.cs" />
+    <Compile Include="Communication\Channels\UdpChannelListener.cs" />
+    <Compile Include="Communication\Channels\UdpPacket.cs" />
+    <Compile Include="Communication\CommunicationException.cs" />
+    <Compile Include="Communication\Defaults.cs" />
+    <Compile Include="Communication\Config\ServerConfigElement.cs" />
+    <Compile Include="Communication\EndPoints\EndPointFactory.cs" />
+    <Compile Include="Communication\EndPoints\LBEndPoint.cs" />
+    <Compile Include="Communication\Apps\Ftp\FtpMessage.cs" />
+    <Compile Include="Communication\Messages\ILBMessage.cs" />
+    <Compile Include="Communication\Messages\LBMessage.cs" />
+    <Compile Include="Communication\Messages\LBRawDataMessage.cs" />
+    <Compile Include="Communication\Messages\LBTextMessage.cs" />
+    <Compile Include="Communication\Messages\MessageEventArgs.cs" />
+    <Compile Include="Communication\Messages\PingMessage.cs" />
+    <Compile Include="Communication\Apps\NfsV2\RpcV2Message.cs" />
+    <Compile Include="Communication\ServerHost.cs" />
+    <Compile Include="Communication\BufferManager.cs" />
+    <Compile Include="Communication\CommunicatorState.cs" />
+    <Compile Include="Communication\Core\Helper.cs" />
+    <Compile Include="Communication\Config\TextProtocolAttribute.cs" />
+    <Compile Include="Communication\Config\ServerConfig.cs" />
+    <Compile Include="Communication\Config\ListenerConfig.cs" />
+    <Compile Include="Communication\Core\Ways.cs" />
+    <Compile Include="Communication\Communicator.cs" />
+    <Compile Include="Communication\ICommunicator.cs" />
+    <Compile Include="Communication\Filters\GraphSizeFilter.cs" />
+    <Compile Include="Communication\Filters\IFilter.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsV2CommonType.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsStatus.cs" />
+    <Compile Include="Communication\Apps\NfsV2\NfsV2Session.cs" />
+    <Compile Include="Communication\Apps\NfsV2\PortMapperSession.cs" />
+    <Compile Include="Communication\Apps\NfsV2\RpcPacket.cs" />
+    <Compile Include="Communication\Security\CertificateManager.cs" />
+    <Compile Include="Communication\Security\ISecurityBinding.cs" />
+    <Compile Include="Communication\Server\ILBServer.cs" />
+    <Compile Include="Communication\Server\ILBSessionContext.cs" />
+    <Compile Include="Communication\Server\LBTcpServer.cs" />
+    <Compile Include="Communication\Server\LBUdpServer.cs" />
+    <Compile Include="Communication\Server\LBServerBase.cs" />
+    <Compile Include="Communication\Server\ServerClientSession.cs" />
+    <Compile Include="Communication\SocketAsyncEventArgsPool.cs" />
+    <Compile Include="Communication\SocketExtension.cs" />
+    <Compile Include="Communication\SocketMode.cs" />
+    <Compile Include="Communication\TransferState.cs" />
+    <Compile Include="Config\AppDomainWrapper.cs" />
+    <Compile Include="Config\Attributes.cs" />
+    <Compile Include="Config\ConfigException.cs" />
+    <Compile Include="Config\ConfigItemAttribute.cs" />
+    <Compile Include="Config\ConfigConvert.cs" />
+    <Compile Include="Config\Factory.cs" />
+    <Compile Include="Config\FileSystemDelayWatcher.cs" />
+    <Compile Include="Config\IFactory.cs" />
+    <Compile Include="Config\IItemFactory.cs" />
+    <Compile Include="Basic\Data\KeyAttribute.cs" />
+    <Compile Include="Basic\Data\TableAttribute.cs" />
+    <Compile Include="Config\ValidatorAttribute.cs" />
+    <Compile Include="Extensions\ExtensionForDictionary.cs" />
+    <Compile Include="Basic\Framework.cs" />
+    <Compile Include="Basic\Data\DataAdapter.cs" />
+    <Compile Include="Basic\Data\Entity.cs" />
+    <Compile Include="Basic\Data\IManager.cs" />
+    <Compile Include="Extensions\ExtensionForEnum.cs" />
+    <Compile Include="Linq\AsEnumerable.cs" />
+    <Compile Include="Linq\Batch.cs" />
+    <Compile Include="Linq\BFS.cs" />
+    <Compile Include="Linq\Concat.cs" />
+    <Compile Include="Linq\DFS.cs" />
+    <Compile Include="Linq\ForEach.cs" />
+    <Compile Include="Linq\Generator.cs" />
+    <Compile Include="Linq\Index.cs" />
+    <Compile Include="Linq\IndexOf.cs" />
+    <Compile Include="Linq\MaxOrDefault.cs" />
+    <Compile Include="Linq\MergeCross.cs" />
+    <Compile Include="Linq\MinOrDefault.cs" />
+    <Compile Include="Linq\Pair.cs" />
+    <Compile Include="Linq\Pipe.cs" />
+    <Compile Include="Linq\Preconcat.cs" />
+    <Compile Include="Linq\Random.cs" />
+    <Compile Include="Linq\Rotate.cs" />
+    <Compile Include="Linq\Scan.cs" />
+    <Compile Include="Linq\Segment.cs" />
+    <Compile Include="Linq\SkipUntil.cs" />
+    <Compile Include="Linq\TakeEvery.cs" />
+    <Compile Include="Linq\Window.cs" />
+    <Compile Include="Log\Config\IInitializable.cs" />
+    <Compile Include="Log\Config\IUseStackTrace.cs" />
+    <Compile Include="Log\Config\LogConfig.cs" />
+    <Compile Include="Log\Config\LogConfigException.cs" />
+    <Compile Include="Log\Config\LogConfigItemFactory.cs" />
+    <Compile Include="Log\Config\LoggerRule.cs" />
+    <Compile Include="Log\Config\LogAttributes.cs" />
+    <Compile Include="Log\Config\Validator.cs" />
+    <Compile Include="Log\Core\FileAppenders\KeepOpenFileAppender.cs" />
+    <Compile Include="Log\Core\FileAppenders\FileAppenderBase.cs" />
+    <Compile Include="Log\Core\FileAppenders\IAppendFileCreateParams.cs" />
+    <Compile Include="Log\Core\FileAppenders\CloseOnEachWriteAppender.cs" />
+    <Compile Include="Log\Core\FileAppenders\SyncFileAppender.cs" />
+    <Compile Include="Log\Helper.cs" />
+    <Compile Include="Log\Core\IRenderable.cs" />
+    <Compile Include="Log\Core\LogEntry.cs" />
+    <Compile Include="Log\Renderers\DomainNameRenderer.cs" />
+    <Compile Include="Log\Renderers\EnvironmentRenderer.cs" />
+    <Compile Include="Log\Renderers\IPRenderer.cs" />
+    <Compile Include="Log\SystemClock.cs" />
+    <Compile Include="Log\Filters\Filter.cs" />
+    <Compile Include="Log\Layouts\DefaultLayout.cs" />
+    <Compile Include="Log\Layouts\Layout.cs" />
+    <Compile Include="Log\Layouts\LayoutParser.cs" />
+    <Compile Include="Log\LogEvent.cs" />
+    <Compile Include="Log\LogFactory.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\LogLevel.cs" />
+    <Compile Include="Log\LogManager.cs" />
+    <Compile Include="Log\Renderers\ADRenderer.cs" />
+    <Compile Include="Log\Renderers\CallStackRenderer.cs" />
+    <Compile Include="Log\Renderers\DateRenderer.cs" />
+    <Compile Include="Log\Renderers\ExceptionRenderer.cs" />
+    <Compile Include="Log\Renderers\GCItem.cs" />
+    <Compile Include="Log\Renderers\GCRenderer.cs" />
+    <Compile Include="Log\Renderers\GuidRenderer.cs" />
+    <Compile Include="Log\Renderers\IdentityRenderer.cs" />
+    <Compile Include="Log\Renderers\IdRenderer.cs" />
+    <Compile Include="Log\Renderers\DnsRenderer.cs" />
+    <Compile Include="Log\Renderers\LabelRenderer.cs" />
+    <Compile Include="Log\Renderers\LevelRenderer.cs" />
+    <Compile Include="Log\Renderers\LoggerRenderer.cs" />
+    <Compile Include="Log\Renderers\LongDateTimeRenderer.cs" />
+    <Compile Include="Log\Renderers\MachineNameRenderer.cs" />
+    <Compile Include="Log\Renderers\MessageRenderer.cs" />
+    <Compile Include="Log\Renderers\NewLineRenderer.cs" />
+    <Compile Include="Log\Renderers\Renderer.cs" />
+    <Compile Include="Log\Renderers\ShortDateTimeRenderer.cs" />
+    <Compile Include="Log\Renderers\ThreadIdRenderer.cs" />
+    <Compile Include="Log\Renderers\ThreadNameRenderer.cs" />
+    <Compile Include="Log\Renderers\TicksRenderer.cs" />
+    <Compile Include="Log\Renderers\TimeRenderer.cs" />
+    <Compile Include="Log\Renderers\WindowsIdentityRenderer.cs" />
+    <Compile Include="Log\Targets\ColoredConsoleTarget.cs" />
+    <Compile Include="Log\Targets\ColorPalette.cs" />
+    <Compile Include="Log\Targets\ConsoleTarget.cs" />
+    <Compile Include="Log\Targets\EventLogTarget.cs" />
+    <Compile Include="Log\Targets\FileArchiveMode.cs" />
+    <Compile Include="Log\Targets\FileTarget.cs" />
+    <Compile Include="Log\Targets\MailTarget.cs" />
+    <Compile Include="Log\Targets\NewLineMode.cs" />
+    <Compile Include="Log\Targets\RtxTarget.cs" />
+    <Compile Include="Log\Targets\SmtpAuthenticationMode.cs" />
+    <Compile Include="Log\Targets\Target.cs" />
+    <Compile Include="Log\Targets\TargetWithLayout.cs" />
+    <Compile Include="Log\Targets\Wrappers\TargetAsyncWrapper.cs" />
+    <Compile Include="Log\TinyLog.cs" />
+    <Compile Include="Threading\BackgroundQueueWorker.cs" />
+    <Compile Include="Threading\delegates.cs" />
+    <Compile Include="Threading\Helper.cs" />
+    <Compile Include="Threading\interfaces.cs" />
+    <Compile Include="Threading\IPerformanceCounter.cs" />
+    <Compile Include="Threading\SyncDictionary.cs" />
+    <Compile Include="Threading\TaskFactory.cs" />
+    <Compile Include="Threading\JobFIFOGroup.cs" />
+    <Compile Include="Threading\LBThreadPool.cs" />
+    <Compile Include="Threading\PriorityQueue.cs" />
+    <Compile Include="Threading\TaskHandle.cs" />
+    <Compile Include="Threading\WaitingQueue.cs" />
+    <Compile Include="Threading\LBSemaphore.cs" />
+    <Compile Include="Threading\TaskQueue.cs" />
+    <Compile Include="Threading\TaskHostBase.cs" />
+    <Compile Include="Threading\Task.cs" />
+    <Compile Include="Threading\enums.cs" />
+    <Compile Include="Threading\ThreadPoolInfo.cs" />
+    <Compile Include="Threading\ThreadPoolManage.cs" />
+    <Compile Include="Utils\Guard.cs" />
+    <Compile Include="Utils\Invoke.cs" />
+    <Compile Include="Utils\ParamGuard.cs" />
+    <Compile Include="Config\MultiFileSystemWatcher .cs" />
+    <Compile Include="Scheduling\Calendar\AnnualCalendar.cs" />
+    <Compile Include="Scheduling\Calendar\BasicCalendar.cs" />
+    <Compile Include="Scheduling\Calendar\DailyCalendar.cs" />
+    <Compile Include="Scheduling\Calendar\HolidayCalendar.cs" />
+    <Compile Include="Scheduling\Calendar\MonthlyCalendar.cs" />
+    <Compile Include="Scheduling\Calendar\WeeklyCalendar.cs" />
+    <Compile Include="Scheduling\Core\Key.cs" />
+    <Compile Include="Data\DataMap.cs" />
+    <Compile Include="Scheduling\ICalendar.cs" />
+    <Compile Include="Scheduling\IJob.cs" />
+    <Compile Include="Scheduling\IStore.cs" />
+    <Compile Include="Scheduling\ITrigger.cs" />
+    <Compile Include="Scheduling\JobBehaviorAttribute.cs" />
+    <Compile Include="Scheduling\JobExecutionContext.cs" />
+    <Compile Include="Scheduling\Core\JobRunShell.cs" />
+    <Compile Include="Scheduling\JobDetail.cs" />
+    <Compile Include="Scheduling\Core\Scheduler.cs" />
+    <Compile Include="Scheduling\SchedulerManager.cs" />
+    <Compile Include="Scheduling\SystemTime.cs" />
+    <Compile Include="Scheduling\TimeOfDay.cs" />
+    <Compile Include="Scheduling\Triggers\TriggerBase.cs" />
+    <Compile Include="Basic\Department.cs" />
+    <Compile Include="Basic\Employee.cs" />
+    <Compile Include="Basic\Organization.cs" />
+    <Compile Include="Win32\GetWindowLongIndex.cs" />
+    <Compile Include="Win32\HitTest.cs" />
+    <Compile Include="Win32\ScrollBars.cs" />
+    <Compile Include="Win32\SetWindowPosFlags.cs" />
+    <Compile Include="Win32\HookProc.cs" />
+    <Compile Include="Win32\HookType.cs" />
+    <Compile Include="Win32\Impersonator.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="Linq\CmpFactory.cs" />
+    <Compile Include="Linq\Distinct.cs" />
+    <Compile Include="Linq\DistinctBy.cs" />
+    <Compile Include="Linq\JoinToString.cs" />
+    <Compile Include="Linq\MaxBy.cs" />
+    <Compile Include="Linq\MinBy.cs" />
+    <Compile Include="Linq\Merge.cs" />
+    <Compile Include="Win32\advapi32.cs" />
+    <Compile Include="Win32\Native.cs" />
+    <Compile Include="Pair.cs" />
+    <Compile Include="Extensions\ExtensionForString.cs" />
+    <Compile Include="Extensions\ExtensionForType.cs" />
+    <Compile Include="LastDo.cs" />
+    <Compile Include="LazyLoader.cs" />
+    <Compile Include="Win32\Kernel32.cs" />
+    <Compile Include="Win32\WindowShowStyles.cs" />
+    <Compile Include="Win32\WindowExStyles.cs" />
+    <Compile Include="Win32\WindowStyles.cs" />
+    <Compile Include="Win32\WinMsg.cs" />
+    <Compile Include="Config\ConfigElement.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Communication\Apps\Ftp\FtpConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Log\LogConfig.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Calendars\" />
+    <Folder Include="Communication\Apps\Http\" />
+    <Folder Include="Log\Renderers\Wrappers\" />
+    <Folder Include="Properties\" />
+    <Folder Include="Scheduling\Jobs\" />
+    <Folder Include="Text\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

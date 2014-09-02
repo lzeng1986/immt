@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="LogConfig"
+    targetNamespace="LogConfig.xsd"
+    elementFormDefault="qualified"
+    xmlns="LogConfig.xsd"
+    xmlns:mstns="http://tempuri.org/LogConfig.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="log">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="global" type="globalType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="dlls" type="dllsType"  minOccurs="0" maxOccurs="1"/>
+        <xs:element name="targets" type="targetsType"  minOccurs="1" maxOccurs="1"/>
+        <xs:element name="loggers" type="loggersType"  minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:complexType name="globalType">
+    <xs:attribute name="tinyLog.LogToConsole" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">TinyLog记录器是否在Console中记录</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="tinyLog.LogToConsoleError" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">TinyLog记录器是否在ConsoleError中记录</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="tinyLog.LogFile" type="xs:string">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">TinyLog记录器是否在ConsoleError中记录</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="tinyLog.MinLogLevel" type="logLevel">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">TinyLog记录器最小日志记录级别</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="globalMinLogLevel" type="logLevel">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">全局最小日志记录级别</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="autoReload" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">指示日志系统是否在配置文件改变时自动重新加载</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>  
+  
+  <xs:simpleType name="logLevel">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="debug"/>
+      <xs:enumeration value="info"/>
+      <xs:enumeration value="warn"/>
+      <xs:enumeration value="error"/>
+      <xs:enumeration value="fatal"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="dllsType">
+    <xs:sequence>
+      <xs:element name="add" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="file" use="required"/>
+          <xs:attribute name="namespace" use="required"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="targetsType">
+    <xs:annotation>
+      <xs:documentation xml:lang="zh-cn">定义输出目标</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>      
+      <xs:element name="target" minOccurs="1" maxOccurs="unbounded">
+        <xs:annotation>
+          <xs:documentation xml:lang="zh-cn">添加一个新的输出目标</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attribute name="name" use="required" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">目标的名称</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="type" use="required" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">目标的类型，由代码中的TypeNameAttribute定义</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Body" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">用于格式化输出消息主体</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Header" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">用于格式化输出消息的页眉</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="Footer" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">用于格式化输出消息的页脚</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:anyAttribute processContents="skip"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="async" type="xs:boolean"/>
+    <xs:attribute name="retry">
+      <xs:simpleType>
+        <xs:restriction base="xs:int">
+          <xs:minInclusive value="2"/>
+          <xs:maxInclusive value="20"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="loggersType">
+    <xs:annotation>
+      <xs:documentation xml:lang="zh-cn">定义记录器</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="logger" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="name" type="xs:token">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">添加一个新的记录器</xs:documentation>
+            </xs:annotation>
+          </xs:attribute>
+          <xs:attribute name="enable" type="xs:boolean"/>
+          <xs:attribute name="minLevel" type="logLevel"/>
+          <xs:attribute name="maxLevel" type="logLevel"/>
+          <xs:attribute name="isFinal" type="xs:boolean"/>
+          <xs:attribute name="writeTo" type="xs:string" use="required"/>
+          <xs:anyAttribute processContents="skip"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>
