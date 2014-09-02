@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="winForm"
+    targetNamespace="http://tempuri.org/winForm.xsd"
+    elementFormDefault="qualified"
+    xmlns="http://tempuri.org/winForm.xsd"
+    xmlns:mstns="http://tempuri.org/winForm.xsd"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+>
+  <xs:element name="winForm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="import" type="importType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="app" type="appType" minOccurs="0" maxOccurs="1"/>
+        <xs:element name="menu" type="menuType" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:complexType name="importType">
+    <xs:sequence>
+      <xs:element name="add" minOccurs="1" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:attribute name="file" type="xs:string" use="required"/>
+          <xs:attribute name="prefix" type="xs:string" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="appType">
+    <xs:attribute name="splashFormType" type="xs:token"/>
+    <xs:attribute name="autoUpdateServer" type="xs:anyURI"/>
+  </xs:complexType>
+
+  <xs:complexType name="menuType">
+    <xs:sequence minOccurs="1" maxOccurs="unbounded">
+      <xs:element ref="menuItem"/>
+    </xs:sequence>
+    <xs:attribute name="invalidMenuDisplayMode">
+      <xs:annotation>
+        <xs:documentation xml:lang="zh-cn">无效菜单的显示方式</xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="hide">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">隐藏无效菜单</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="disable">
+            <xs:annotation>
+              <xs:documentation xml:lang="zh-cn">将无效菜单设置为disable</xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>  
+
+  <xs:element name="menuItem">
+    <xs:annotation>
+      <xs:documentation xml:lang="zh-cn">菜单项</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:token" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

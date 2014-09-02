@@ -1,0 +1,4 @@
+﻿概念说明：
+LogicalLine:指文本中的逻辑行
+VisibleLine：指在编辑器中显示的行
+PhysicalLine：指屏幕显示的当前行，因为编辑器中存在代码折叠

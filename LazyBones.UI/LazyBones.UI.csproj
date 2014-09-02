@@ -1,0 +1,548 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5D708EE-FFB2-434F-A730-28402FD046E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LazyBones.UI</RootNamespace>
+    <AssemblyName>LazyBones.UI</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\ComponentWithContainerForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ControlRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ControlRes.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\DataGridViews\DataGridViewComboBoxExColumn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViews\DataGridViewRichTextBoxColumn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViews\DataGridViewNumericUpDownColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DataGridViews\DataGridViewTreeListColumn.cs" />
+    <Compile Include="Controls\Docking\AutoHideGrid.cs" />
+    <Compile Include="Controls\Docking\AutoHideStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\AutoHideStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\AutoHideWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\ButtonBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\Const.cs" />
+    <Compile Include="Controls\Docking\DockContentEventArgs.cs" />
+    <Compile Include="Controls\Docking\DockContentHandler.cs" />
+    <Compile Include="Controls\Docking\DockDragHandler.cs" />
+    <Compile Include="Controls\Docking\DockGrid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockGridCaption.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockGridCaptionBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockGridStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockGridStripBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockIndicator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockOutline.cs" />
+    <Compile Include="Controls\Docking\DockPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockPanelSkin.cs" />
+    <Compile Include="Controls\Docking\DockWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\DockWindowCollection.cs" />
+    <Compile Include="Controls\Docking\DragHandler.cs" />
+    <Compile Include="Controls\Docking\DummyControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\Enums.cs" />
+    <Compile Include="Controls\Docking\Factories.cs" />
+    <Compile Include="Controls\Docking\FloatWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\FocusManager.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\FormDockContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\FormDrag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\Helper.cs" />
+    <Compile Include="Controls\Docking\DockPanelExtender.cs" />
+    <Compile Include="Controls\Docking\Interfaces.cs" />
+    <Compile Include="Controls\Docking\MdiClientController.cs" />
+    <Compile Include="Controls\Docking\NestedGridCollection.cs" />
+    <Compile Include="Controls\Docking\Splitter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Docking\SplitterDragHandler.cs" />
+    <Compile Include="Controls\Docking\StripTab.cs" />
+    <Compile Include="Controls\DropDownControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\DropDownRichTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Extensions.cs" />
+    <Compile Include="Controls\FullScreen.cs" />
+    <Compile Include="Controls\Gantt\eventArgs.cs" />
+    <Compile Include="Controls\Gantt\GanttItem.cs" />
+    <Compile Include="Controls\Gantt\GanttTaskCollection.cs" />
+    <Compile Include="Controls\Gantt\GanttChart.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Gantt\GanttSource.cs" />
+    <Compile Include="Controls\Gantt\GanttTask.cs" />
+    <Compile Include="Controls\Gantt\Helper.cs" />
+    <Compile Include="Controls\Gantt\IViewport.cs" />
+    <Compile Include="Controls\Gantt\SmartList.cs" />
+    <Compile Include="Controls\Gantt\structs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Gantt\TimeScale.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\IAnimation.cs" />
+    <Compile Include="Controls\List\Columns\ComboxColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\Columns\ButtonColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\Columns\TextColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\Column.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\eventArgs.cs" />
+    <Compile Include="Controls\List\IEditorControl.cs" />
+    <Compile Include="Controls\List\ItemCell.cs" />
+    <Compile Include="Controls\List\Columns\DropDownColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\Columns\ImageColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\ListRow.cs" />
+    <Compile Include="Controls\List\ListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\List\CellPaintStyle.cs" />
+    <Compile Include="Controls\SmartPlus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SmartPlus.Designer.cs">
+      <DependentUpon>SmartPlus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SmartTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Speed.cs" />
+    <Compile Include="Controls\Editor\BracketHighlight.cs" />
+    <Compile Include="Controls\Editor\BrushPool.cs" />
+    <Compile Include="Controls\Editor\Caret.cs" />
+    <Compile Include="Controls\Editor\TextAreaClipboardHandler.cs" />
+    <Compile Include="Controls\Editor\ColumnRange.cs" />
+    <Compile Include="Controls\Editor\Document.cs" />
+    <Compile Include="Controls\Editor\DocumentEventArg.cs" />
+    <Compile Include="Controls\Editor\EditorOptions.cs" />
+    <Compile Include="Controls\Editor\FileIO.cs" />
+    <Compile Include="Controls\Editor\FoldingManager.cs" />
+    <Compile Include="Controls\Editor\FoldMargin.cs" />
+    <Compile Include="Controls\Editor\FoldMarker.cs" />
+    <Compile Include="Controls\Editor\GapTextBuffer.cs" />
+    <Compile Include="Controls\Editor\Helper.cs" />
+    <Compile Include="Controls\Editor\HighlightingManager.cs" />
+    <Compile Include="Controls\Editor\HorizontalRuler.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\IFoldStrategy.cs" />
+    <Compile Include="Controls\Editor\IHighlighter.cs" />
+    <Compile Include="Controls\Editor\IHighlightingStrategy.cs" />
+    <Compile Include="Controls\Editor\KeyActions\IKeyAction.cs" />
+    <Compile Include="Controls\Editor\ISegment.cs" />
+    <Compile Include="Controls\Editor\TextAreaKeyHandler.cs" />
+    <Compile Include="Controls\Editor\LazyDeleter.cs" />
+    <Compile Include="Controls\Editor\LineNoMargin.cs" />
+    <Compile Include="Controls\Editor\MarginBase.cs" />
+    <Compile Include="Controls\Editor\MarkerBase.cs" />
+    <Compile Include="Controls\Editor\PairKey.cs" />
+    <Compile Include="Controls\Editor\Selection.cs" />
+    <Compile Include="Controls\Editor\SelectionManager.cs" />
+    <Compile Include="Controls\Editor\TextAnchor.cs" />
+    <Compile Include="Controls\Editor\TextArea.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\TextAreaUpdater.cs" />
+    <Compile Include="Controls\Editor\TextDrawInfo.cs" />
+    <Compile Include="Controls\Editor\TextDrawInfoManager.cs" />
+    <Compile Include="Controls\Editor\TextEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\TextEditorResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TextEditorResource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Editor\TextFontContainer.cs" />
+    <Compile Include="Controls\Editor\TextLine.cs" />
+    <Compile Include="Controls\Editor\TextLineEventArgs.cs" />
+    <Compile Include="Controls\Editor\TextLineManager.cs" />
+    <Compile Include="Controls\Editor\TextLineTree.cs" />
+    <Compile Include="Controls\Editor\TextLocation.cs" />
+    <Compile Include="Controls\Editor\TextMargin.cs" />
+    <Compile Include="Controls\Editor\TextMarginMouseHandler.cs" />
+    <Compile Include="Controls\Editor\TextMarker.cs" />
+    <Compile Include="Controls\Editor\TextMarkerManager.cs" />
+    <Compile Include="Controls\Editor\TextMeasurer.cs" />
+    <Compile Include="Controls\Editor\TextWord.cs" />
+    <Compile Include="Controls\Editor\Tips\TipSection.cs" />
+    <Compile Include="Controls\Editor\Tips\ToolTipRequestEventArgs.cs" />
+    <Compile Include="Controls\Editor\UndoRedo\IUndoRedoAction.cs" />
+    <Compile Include="Controls\Editor\UndoRedo\UndoQueue.cs" />
+    <Compile Include="Controls\Editor\UndoRedo\UndoStack.cs" />
+    <Compile Include="Controls\Editor\WeakCollection.cs" />
+    <Compile Include="Controls\Editor\Windows\FormFindAndReplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Editor\Windows\FormToolTip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TrayNotifier.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TrayNotifyWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\DataSourceBindingHandler.cs" />
+    <Compile Include="Controls\Tree\Designer\FormTreeColumnCollectionEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\Designer\FormTreeColumnCollectionEditor.Designer.cs">
+      <DependentUpon>FormTreeColumnCollectionEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Tree\Designer\TreeColumnCollectionEditor.cs" />
+    <Compile Include="Controls\Tree\DrawContext.cs" />
+    <Compile Include="Controls\Tree\DrawSelectionMode.cs" />
+    <Compile Include="Controls\Tree\ITreeDataSource.cs" />
+    <Compile Include="Controls\Tree\NodeCellEditable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\Helper.cs" />
+    <Compile Include="Controls\Tree\InputState.cs" />
+    <Compile Include="Controls\Tree\IToolTipProvider.cs" />
+    <Compile Include="Controls\Tree\ITreeModel.cs" />
+    <Compile Include="Controls\Tree\NodeCellCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\NodeCell.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\NodeCellCollection.cs" />
+    <Compile Include="Controls\Tree\NodeCellImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\NodeCellExpandState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\ToolTipEventArgs.cs" />
+    <Compile Include="Controls\Tree\TreeColumn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\TreeColumnCheckBox.cs" />
+    <Compile Include="Controls\Tree\TreeColumnCollection.cs" />
+    <Compile Include="Controls\Tree\TreeColumnEditable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\TreeColumnEventArgs.cs" />
+    <Compile Include="Controls\Tree\TreeColumnExpandState.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\TreeColumnImage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\TreeList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Tree\TreeListNode.cs" />
+    <Compile Include="Controls\Tree\TreeListNodeEventArgs.cs" />
+    <Compile Include="Controls\Tree\TreeListNodeMouseEventArgs.cs" />
+    <Compile Include="Controls\Tree\TreePath.cs" />
+    <Compile Include="Controls\Tree\TreePathEventArgs.cs" />
+    <Compile Include="Controls\Tree\TreeSelectionMode.cs" />
+    <Compile Include="Designers\DropDownTreeViewDesigner.cs" />
+    <Compile Include="Designers\EncodingConverter.cs" />
+    <Compile Include="Designers\EnumCheckedBoxList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Designers\EnumCheckedBoxListDesigner.cs" />
+    <Compile Include="Designers\EnumDropDownEditor.cs" />
+    <Compile Include="Designers\EnumSelectEditor.cs" />
+    <Compile Include="Designers\EnumTypeConverter.cs" />
+    <Compile Include="Designers\FormEnumTypeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designers\FormEnumTypeEditor.Designer.cs">
+      <DependentUpon>FormEnumTypeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designers\FormObjectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designers\FormObjectEditor.Designer.cs">
+      <DependentUpon>FormObjectEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designers\FormTreeListViewNodeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designers\FormTreeListViewNodeEditor.Designer.cs">
+      <DependentUpon>FormTreeListViewNodeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designers\FormTreeViewEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Designers\FormTreeViewEditor.Designer.cs">
+      <DependentUpon>FormTreeViewEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Designers\ObjectEditor.cs" />
+    <Compile Include="Designers\TreeListViewDesigner.cs" />
+    <Compile Include="Drawing\ExtensionForGraphics.cs" />
+    <Compile Include="Drawing\GDIHelper.cs" />
+    <Compile Include="Drawing\Painter.cs" />
+    <Compile Include="Drawing\PaintStyle.cs" />
+    <Compile Include="Controls\DropDownListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IHost.cs" />
+    <Compile Include="MenuItemBase.cs" />
+    <Compile Include="MenuItemIdAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RunningContext.cs" />
+    <Compile Include="Threading\LBThreadPoolViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Threading\LBThreadPoolViewer.designer.cs">
+      <DependentUpon>LBThreadPoolViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Threading\ThreadPoolInfoView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Win32\FlashWInfo.cs" />
+    <Compile Include="Win32\LastInputInfo.cs" />
+    <Compile Include="Win32\LocalWinHook.cs" />
+    <Compile Include="Win32\User32.cs" />
+    <Compile Include="WinFormApp.cs" />
+    <Compile Include="WinFormAppConfig.cs" />
+    <Compile Include="WinFormConfigXmlLoader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\ControlRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>ControlRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SmartPlus.resx">
+      <DependentUpon>SmartPlus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editor\TextEditorResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TextEditorResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Editor\Windows\FormFindAndReplace.resx">
+      <DependentUpon>FormFindAndReplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Tree\Designer\FormTreeColumnCollectionEditor.resx">
+      <DependentUpon>FormTreeColumnCollectionEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Tree\TreeList.resx">
+      <DependentUpon>TreeList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designers\FormEnumTypeEditor.resx">
+      <DependentUpon>FormEnumTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designers\FormObjectEditor.resx">
+      <DependentUpon>FormObjectEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designers\FormTreeListViewNodeEditor.resx">
+      <DependentUpon>FormTreeListViewNodeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Designers\FormTreeViewEditor.resx">
+      <DependentUpon>FormTreeViewEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Threading\LBThreadPoolViewer.resx">
+      <DependentUpon>LBThreadPoolViewer.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\Editor\LineNo.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="winForm.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LazyBones\LazyBones.csproj">
+      <Project>{CE3B8C68-4144-4CE4-A919-C39CEAC07484}</Project>
+      <Name>LazyBones</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Bottom.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Fill.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Hotspot.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_HotspotIndex.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Left.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Right.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PaneDiamond_Top.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelBottom.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelBottom_Active.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelFill.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelFill_Active.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelLeft.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelLeft_Active.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelRight.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelRight_Active.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelTop.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PanelTop_Active.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DockPane_AutoHide.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DockPane_Close.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DockPane_Dock.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DockPane_Option.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DockPane_OptionOverflow.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rightarrow.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Chart\" />
+    <Folder Include="Log\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\Editor\说明.txt" />
+    <None Include="Resources\图片1.png" />
+    <None Include="Resources\GoToPreviousMessage.png" />
+    <None Include="Resources\unknown.bmp" />
+    <None Include="Resources\uncheck.bmp" />
+    <None Include="Resources\plus.bmp" />
+    <None Include="Resources\minus.bmp" />
+    <None Include="Resources\check.bmp" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
