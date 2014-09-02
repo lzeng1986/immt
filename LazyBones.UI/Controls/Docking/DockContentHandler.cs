@@ -256,7 +256,7 @@ namespace LazyBones.UI.Controls.Docking
             {
                 Visible = false;
                 if (DockGrid == null)
-                    DockGrid = DockPanel.DockGridFactory.CreateDockGrid(Content, DockStyle);
+                    DockGrid = DockPanel.Extender.NewDockGrid(Content, new DockGridStyle { VisibleStyle = DockStyle });
                 DockGrid.ActiveContent = this.Content;
                 if (DockStyle == DockStyle.Fill)
                 {
@@ -303,10 +303,7 @@ namespace LazyBones.UI.Controls.Docking
             DockPanel = dockPanel;
 
             var gridExisting = DockPanel.Grids.FirstOrDefault(g => g.DockStyle == dockStyle && g.IsActivated);
-            if (gridExisting == null)
-                DockGrid = DockPanel.DockGridFactory.CreateDockGrid(Content, dockStyle);
-            else
-                DockGrid = gridExisting;
+            DockGrid = gridExisting ?? DockPanel.Extender.NewDockGrid(Content, new DockGridStyle { VisibleStyle = dockStyle });
 
             DockPanel.ResumeLayout(true); //we'll resume the layout before activating to ensure that the position
             Activate();                         //and size of the form are finally processed before the form is shown
@@ -319,7 +316,7 @@ namespace LazyBones.UI.Controls.Docking
             DockPanel = dockPanel;
             if (DockGrid == null)
             {
-                DockGrid = DockPanel.DockGridFactory.CreateDockGrid(Content, floatWindowBounds);
+                DockGrid = DockPanel.Extender.NewDockGrid(Content, new DockGridStyle { FloatBounds = floatWindowBounds });
             }
             if (DockGrid.IsFloat)
             {
@@ -345,7 +342,7 @@ namespace LazyBones.UI.Controls.Docking
 
             DockPanel = grid.DockPanel;
             DockGrid = grid;
-            
+
             grid.SetContentIndex(Content, ind);
             Activate();
 
@@ -361,7 +358,7 @@ namespace LazyBones.UI.Controls.Docking
             previousGrid.DockPanel.SuspendLayout();
 
             DockPanel = previousGrid.DockPanel;
-            DockPanel.DockGridFactory.CreateDockGrid(Content, previousGrid, dockStyle, proportion);
+            //DockPanel.DockGridFactory.CreateDockGrid(Content, previousGrid, dockStyle, proportion);
             Show();
 
             previousGrid.DockPanel.ResumeLayout(true);
@@ -567,13 +564,13 @@ namespace LazyBones.UI.Controls.Docking
 
         public void FloatAt(Rectangle floatWindowBounds)
         {
-            DockPanel.DockGridFactory.CreateDockGrid(Content, floatWindowBounds);
+            DockPanel.Extender.NewDockGrid(Content, new DockGridStyle { FloatBounds = floatWindowBounds });
         }
 
         public void DockTo(DockStyle dockStyle)
         {
             if (dockStyle != DockStyle.None)
-                this.DockGrid = DockPanel.DockGridFactory.CreateDockGrid(Content, dockStyle);
+                this.DockGrid = DockPanel.Extender.NewDockGrid(Content, new DockGridStyle { VisibleStyle = dockStyle });
         }
         public void DockTo(DockPanel panel, DockStyle dockStyle)
         {
@@ -588,7 +585,7 @@ namespace LazyBones.UI.Controls.Docking
             }
             else
             {
-                var gridFrom = dockPanel.DockGridFactory.CreateDockGrid(Content, grid.DockStyle);
+                var gridFrom = dockPanel.Extender.NewDockGrid(Content, new DockGridStyle { VisibleStyle = grid.DockStyle });
                 var container = grid.Container;
                 if (dockStyle != DockStyle.None)
                     gridFrom.DockTo(container, grid, dockStyle, 0.5);

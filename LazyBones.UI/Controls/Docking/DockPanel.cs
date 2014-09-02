@@ -51,26 +51,6 @@ namespace LazyBones.UI.Controls.Docking
         {
             get { return extender; }
         }
-        internal IDockGridFactory DockGridFactory
-        {
-            get { return extender.DockGridFactory; }
-        }
-        internal IFloatWindowFactory FloatWindowFactory
-        {
-            get { return extender.FloatWindowFactory; }
-        }
-        internal IDockGridCaptionFactory DockGridCaptionFactory
-        {
-            get { return extender.DockGridCaptionFactory; }
-        }
-        internal IDockGridStripFactory DockGridStripFactory
-        {
-            get { return extender.DockGridStripFactory; }
-        }
-        internal IAutoHideStripFactory AutoHideStripFactory
-        {
-            get { return extender.AutoHideStripFactory; }
-        }
         internal void BeginDrag(ISplitterDragSource dragSource, Rectangle splitterScreenBounds)
         {
             splitterDragHandler.BeginDrag(dragSource, splitterScreenBounds);
@@ -94,13 +74,12 @@ namespace LazyBones.UI.Controls.Docking
             {
                 if (autoHideStrip == null)
                 {
-                    autoHideStrip = AutoHideStripFactory.CreateAutoHideStrip(this);
+                    autoHideStrip = extender.NewAutoHideStrip(this);
                     Controls.Add(autoHideStrip);
                 }
                 return autoHideStrip;
             }
         }
-
 
         public DockGrid GetGridAtCursor()
         {

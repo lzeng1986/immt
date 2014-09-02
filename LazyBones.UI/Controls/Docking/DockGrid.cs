@@ -28,14 +28,14 @@ namespace LazyBones.UI.Controls.Docking
             AllowDockDragAndDrop = true;
 
             splitter = new Splitter(DockPanel);
-            DockGridCaption = DockPanel.DockGridCaptionFactory.CreateDockGridCaption(this);
-            TabStrip = DockPanel.DockGridStripFactory.CreateDockGridStrip(this);
+            DockGridCaption = DockPanel.Extender.NewDockGridCaption(this);
+            TabStrip = DockPanel.Extender.NewDockGridStrip(this);
             Controls.AddRange(new Control[] { DockGridCaption, TabStrip, splitter });
 
             NestedDockStyle = DockStyle.Left;
             DockPanel.SuspendLayout();
             if (IsFloat)
-                Container = DockPanel.FloatWindowFactory.CreateFloatWindow(DockPanel, dockGridStyle.FloatBounds);
+                Container = DockPanel.Extender.NewFloatWindow(DockPanel, dockGridStyle.FloatBounds);
             else if (dockGridStyle.PreviousGrid != null)
                 DockTo(dockGridStyle.PreviousGrid.Container, dockGridStyle.PreviousGrid, dockStyle, dockGridStyle.Proportion);
 
@@ -138,7 +138,7 @@ namespace LazyBones.UI.Controls.Docking
                     throw new ArgumentException("DockStyle值当前无效");
                 IsFloat = (value == DockStyle.None);
                 if (IsFloat)
-                    Container = DockPanel.FloatWindowFactory.CreateFloatWindow(DockPanel);
+                    Container = DockPanel.Extender.NewFloatWindow(DockPanel,Rectangle.Empty);
                 else
                     Container = DockPanel.DockWindows[dockStyle];
                 dockStyle = value;
@@ -505,7 +505,7 @@ namespace LazyBones.UI.Controls.Docking
         {
             DockStyle = DockStyle.None;
             if (Container.NestedGrids.Count > 1)
-                Container = DockPanel.FloatWindowFactory.CreateFloatWindow(DockPanel, floatWindowBounds);
+                Container = DockPanel.Extender.NewFloatWindow(DockPanel, floatWindowBounds);
             (Container as FloatWindow).Bounds = floatWindowBounds;
         }
         public Control DragControl

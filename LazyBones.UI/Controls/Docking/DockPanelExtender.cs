@@ -1,6 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using System;
 
 namespace LazyBones.UI.Controls.Docking
 {
@@ -12,11 +12,13 @@ namespace LazyBones.UI.Controls.Docking
             NewDockGridStrip = grid => new DockGridStrip(grid);
             NewFloatWindow = (panel, bound) => new FloatWindow(panel, bound);
             NewDockGrid = (content, style) => new DockGrid(content, style);
+            NewAutoHideStrip = (panel) => new AutoHideStrip(panel);
         }
         public Func<DockGrid, DockGridCaptionBase> NewDockGridCaption { get; set; }
         public Func<DockGrid, DockGridStripBase> NewDockGridStrip { get; set; }
         public Func<DockPanel, Rectangle, FloatWindow> NewFloatWindow { get; set; }
         public Func<IDockContent, DockGridStyle, DockGrid> NewDockGrid { get; set; }
+        public Func<DockPanel, AutoHideStripBase> NewAutoHideStrip { get; set; }
     }
     public class DockGridStyle
     {

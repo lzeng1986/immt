@@ -109,7 +109,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Docking\Enums.cs" />
-    <Compile Include="Controls\Docking\Factories.cs" />
     <Compile Include="Controls\Docking\FloatWindow.cs">
       <SubType>Form</SubType>
     </Compile>
