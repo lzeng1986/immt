@@ -27,33 +27,7 @@ namespace LazyBones.UI.Controls.Docking
         static Pen DocumentTabActiveBorderPen = new Pen(Color.Gold, TabPadding.Bottom);
         static Pen DocumentTabInactiveBorderPen = SystemPens.GrayText;
 
-        class ListButton : ButtonBase
-        {
-            Bitmap m_image0, m_image1;
-
-            public ListButton(Bitmap image0, Bitmap image1)
-                : base()
-            {
-                m_image0 = image0;
-                m_image1 = image1;
-            }
-            bool imageCategory = true;
-            public bool Overflowed
-            {
-                get { return imageCategory; }
-                set
-                {
-                    if (imageCategory == value)
-                        return;
-                    imageCategory = value;
-                    Invalidate();
-                }
-            }
-            public override Bitmap Bmp
-            {
-                get { return imageCategory ? m_image0 : m_image1; }
-            }
-        }
+        
 
         ContextMenuStrip selectMenu;
         protected static readonly Bitmap CloseBmp = ControlRes.Close;
@@ -191,7 +165,7 @@ namespace LazyBones.UI.Controls.Docking
         }
         Font TextFont
         {
-            get { return DockGrid.DockPanel.Skin.StripFont; }
+            get { return DockGrid.DockPanel.StripFont; }
         }
 
         const TextFormatFlags textFormat = TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
@@ -431,13 +405,13 @@ namespace LazyBones.UI.Controls.Docking
             Brush brush;
             if (DockGrid.ActiveContent == tab.Content)
             {
-                brush = DockGrid.DockPanel.Skin.ActiveTabGradient.GetBrush(tabBounds);
-                textColor = DockGrid.DockPanel.Skin.ActiveTabGradient.TextColor;
+                brush = SystemBrushes.GradientActiveCaption;
+                textColor = SystemColors.GradientActiveCaption;
             }
             else
             {
-                brush = DockGrid.DockPanel.Skin.InactiveTabGradient.GetBrush(tabBounds);
-                textColor = DockGrid.DockPanel.Skin.InactiveTabGradient.TextColor;
+                brush = SystemBrushes.GradientInactiveCaption;
+                textColor = SystemColors.GradientInactiveCaption;
             }
             using (brush) { g.FillPath(brush, path); }
             if (Appearance == AppearanceStyle.ToolWindow)//绘制分割线
@@ -532,11 +506,7 @@ namespace LazyBones.UI.Controls.Docking
         }
         protected override void OnPaint(PaintEventArgs e)
         {
-            var rect = DisplayRectangle;
-            using (var brush = DockGrid.DockPanel.Skin.StripGradient.GetBrush(rect))
-            {
-                e.Graphics.FillRectangle(brush, rect);
-            }
+            e.Graphics.FillRectangle(SystemBrushes.ControlDark, DisplayRectangle);
 
             base.OnPaint(e);
 

@@ -109,7 +109,7 @@ namespace LazyBones.UI.Controls.Docking
         }
         Font TextFont
         {
-            get { return DockGrid.DockPanel.Skin.StripFont; }
+            get { return DockGrid.DockPanel.StripFont; }
         }
 
         const TextFormatFlags textFormat = TextFormatFlags.SingleLine | TextFormatFlags.EndEllipsis | TextFormatFlags.VerticalCenter;
@@ -135,18 +135,11 @@ namespace LazyBones.UI.Controls.Docking
 
             if (DockGrid.IsActivated)
             {
-                using (var brush = DockGrid.DockPanel.Skin.ActiveCaptionGradient.GetBrush(ClientRectangle))
-                {
-                    brush.Blend = ActiveBackColorGradientBlend;
-                    g.FillRectangle(brush, ClientRectangle);
-                }
+                g.FillRectangle(SystemBrushes.ActiveCaption, ClientRectangle);
             }
             else
             {
-                using (var brush = DockGrid.DockPanel.Skin.InactiveCaptionGradient.GetBrush(ClientRectangle))
-                {
-                    g.FillRectangle(brush, ClientRectangle);
-                }
+                g.FillRectangle(SystemBrushes.InactiveCaption, ClientRectangle);
             }
 
             var rectCaption = ClientRectangle;
@@ -160,11 +153,7 @@ namespace LazyBones.UI.Controls.Docking
             rectCaptionText.Y += TextMargin.Top;
             rectCaptionText.Height -= TextMargin.Vertical;
 
-            Color textColor;
-            if (DockGrid.IsActivated)
-                textColor = DockGrid.DockPanel.Skin.ActiveCaptionGradient.TextColor;
-            else
-                textColor = DockGrid.DockPanel.Skin.InactiveCaptionGradient.TextColor;
+            var textColor = DockGrid.IsActivated ? SystemColors.ActiveCaptionText : SystemColors.InactiveCaptionText;
             TextRenderer.DrawText(g, DockGrid.CaptionText, TextFont, this.RtlTransformRect(rectCaptionText), textColor, TextFormat);
         }
         protected override void OnRightToLeftChanged(EventArgs e)
@@ -222,23 +211,5 @@ namespace LazyBones.UI.Controls.Docking
             optionsButton.Bounds = this.RtlTransformRect(new Rectangle(point, buttonSize));
         }
     }
-    internal class AutoHideButton : ButtonBase
-    {
-        Bitmap dock, autoHide;
-        DockGridCaption caption;
-        public AutoHideButton(DockGridCaption caption, Bitmap dockBmp, Bitmap autoHideBmp)
-        {
-            dock = dockBmp;
-            autoHide = autoHideBmp;
-            this.caption = caption;
-        }
-        public override Bitmap Bmp
-        {
-            get { return caption.IsAutoHide ? autoHide : dock; }
-        }
-        protected override void OnRefreshChanges()
-        {
-            base.OnRefreshChanges();
-        }
-    }
+    
 }

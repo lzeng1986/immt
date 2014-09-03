@@ -116,21 +116,20 @@ namespace LazyBones.UI.Controls.Docking
             return null;
         }
 
-        DockPanelSkin skin = new DockPanelSkin();
-        [Category("Docking")]
-        [Description("DockPanel皮肤")]
-        public DockPanelSkin Skin
-        {
-            get { return skin; }
-            set { skin = value; }
-        }
-
         Size defaultFloatWindowSize = new Size(300, 300);
         [Category("Docking"), Description("浮动窗口默认大小"), DefaultValue(typeof(Size), "300,300")]
         public Size DefaultFloatWindowSize
         {
             get { return defaultFloatWindowSize; }
             set { defaultFloatWindowSize = value; }
+        }
+
+        Font stripFont = SystemFonts.MenuFont;
+        [Category("Docking"), DefaultValue(typeof(Font), "MenuFont")]
+        public Font StripFont
+        {
+            get { return stripFont; }
+            set { stripFont = value; }
         }
 
         internal DockWindowCollection DockWindows { get { return dockWindows; } }

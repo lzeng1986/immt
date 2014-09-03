@@ -70,7 +70,7 @@
     <Compile Include="Controls\Docking\AutoHideWindow.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Docking\ButtonBase.cs">
+    <Compile Include="Controls\Docking\Buttons.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\Docking\Const.cs" />
@@ -99,7 +99,6 @@
     <Compile Include="Controls\Docking\DockPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Docking\DockPanelSkin.cs" />
     <Compile Include="Controls\Docking\DockWindow.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -528,6 +527,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Controls\Editor\说明.txt" />
+    <None Include="Resources\DockPane_Close.png" />
     <None Include="Resources\图片1.png" />
     <None Include="Resources\GoToPreviousMessage.png" />
     <None Include="Resources\unknown.bmp" />

@@ -22,7 +22,7 @@ namespace LazyBones.UI.Controls.Docking
 
         public Font TextFont
         {
-            get { return DockPanel.Skin.StripFont; }
+            get { return DockPanel.StripFont; }
         }
 
         static StringFormat stringFormatTabHorizontal = new StringFormat()
@@ -226,10 +226,7 @@ namespace LazyBones.UI.Controls.Docking
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            using (var brush = DockPanel.Skin.StripGradient.GetBrush(ClientRectangle))
-            {
-                g.FillRectangle(brush, ClientRectangle);
-            }
+            g.FillRectangle(SystemBrushes.ControlDark, ClientRectangle);
             DrawTabStrip(g);
         }
         void DrawTabStrip(Graphics g)
@@ -273,11 +270,7 @@ namespace LazyBones.UI.Controls.Docking
             IDockContent content = tab.Content;
 
             GraphicsPath path = GetTabOutline(tab, false, true);
-
-            using (var brush = DockPanel.Skin.TabGradient.GetBrush(tabOriginRect))
-            {
-                g.FillPath(brush, path);
-            }
+            g.FillPath(SystemBrushes.ControlText, path);
             g.DrawPath(SystemPens.GrayText, path);
 
             // Set no rotate for drawing icon and text
@@ -324,10 +317,7 @@ namespace LazyBones.UI.Controls.Docking
             rectText.Width -= ImgMargin.Horizontal + imageWidth + TabGap;
             rectText = RtlTransform(GetTransformedRectangle(dockStyle, rectText), dockStyle);
 
-            using (var b = new SolidBrush(DockPanel.Skin.ActiveTabGradient.TextColor))
-            {
-                g.DrawString(content.Handler.TabText, TextFont, b, rectText, IsVertical(dockStyle) ? TabStringFormatVertical : TabStringFormatHorizontal);
-            }
+            g.DrawString(content.Handler.TabText, TextFont, SystemBrushes.GradientActiveCaption, rectText, IsVertical(dockStyle) ? TabStringFormatVertical : TabStringFormatHorizontal);
 
             // Set rotate back
             g.Transform = matrixRotate;
