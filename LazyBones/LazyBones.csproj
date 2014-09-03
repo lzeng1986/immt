@@ -383,12 +383,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Calendars\" />
     <Folder Include="Communication\Apps\Http\" />
     <Folder Include="Log\Renderers\Wrappers\" />
     <Folder Include="Properties\" />
     <Folder Include="Scheduling\Jobs\" />
-    <Folder Include="Text\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

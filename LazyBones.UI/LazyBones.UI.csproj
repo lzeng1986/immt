@@ -507,9 +507,6 @@
     <None Include="Resources\DockPane_AutoHide.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\DockPane_Close.bmp" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\DockPane_Dock.bmp" />
   </ItemGroup>
   <ItemGroup>
@@ -521,10 +518,7 @@
   <ItemGroup>
     <None Include="Resources\rightarrow.cur" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\Chart\" />
-    <Folder Include="Log\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Controls\Editor\说明.txt" />
     <None Include="Resources\DockPane_Close.png" />
