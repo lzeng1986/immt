@@ -27,7 +27,7 @@ namespace LazyBones.UI.Controls.Docking
         static Pen DocumentTabActiveBorderPen = new Pen(Color.Gold, TabPadding.Bottom);
         static Pen DocumentTabInactiveBorderPen = SystemPens.GrayText;
 
-        
+
 
         ContextMenuStrip selectMenu;
         protected static readonly Bitmap CloseBmp = ControlRes.Close;
@@ -48,7 +48,7 @@ namespace LazyBones.UI.Controls.Docking
 
             closeButton = new SimpleButton(CloseBmp);
             toolTip.SetToolTip(closeButton, "关闭");
-            closeButton.MouseClick += delegate { DockGrid.CloseActiveContent(); };
+            closeButton.MouseClick += (s, e) => DockGrid.CloseActiveContent();
 
             windowListButton = new ListButton(WindowListBmp, WindowListOverflowBmp);
             toolTip.SetToolTip(windowListButton, "窗体列表");
@@ -95,10 +95,8 @@ namespace LazyBones.UI.Controls.Docking
             }
             else
             {
-                closeButton.Enabled = DockGrid.ActiveContent == null ? true : DockGrid.ActiveContent.Handler.CloseButtonEnabled;
-                closeButton.Visible = DockGrid.ActiveContent == null ? true : DockGrid.ActiveContent.Handler.CloseButtonVisible;
-                closeButton.RefreshChanges();
-                windowListButton.RefreshChanges();
+                closeButton.Enabled = DockGrid.ActiveContent != null && DockGrid.ActiveContent.Handler.CloseButtonEnabled;
+                closeButton.Visible = DockGrid.ActiveContent != null && DockGrid.ActiveContent.Handler.CloseButtonVisible;
             }
         }
         protected override void OnLayout(LayoutEventArgs levent)
@@ -116,8 +114,8 @@ namespace LazyBones.UI.Controls.Docking
         {
             var rectTabStrip = DisplayRectangle;
 
-            var buttonWidth = closeButton.Bmp.Width;
-            var buttonHeight = closeButton.Bmp.Height;
+            var buttonWidth = closeButton.BackgroundImage.Width;
+            var buttonHeight = closeButton.BackgroundImage.Height;
             var height = rectTabStrip.Height - ButtonMargin.Vertical - 2;
             if (height < 4)
                 height = 4;
@@ -169,24 +167,7 @@ namespace LazyBones.UI.Controls.Docking
         }
 
         const TextFormatFlags textFormat = TextFormatFlags.EndEllipsis | TextFormatFlags.SingleLine | TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter;
-        TextFormatFlags DocumentTextFormat
-        {
-            get
-            {
-                if (RightToLeft == RightToLeft.Yes)
-                    return textFormat | TextFormatFlags.RightToLeft;
-                return textFormat;
-            }
-        }
-        TextFormatFlags ToolWindowTextFormat
-        {
-            get
-            {
-                if (RightToLeft == RightToLeft.Yes)
-                    return textFormat | TextFormatFlags.RightToLeft | TextFormatFlags.Right;
-                return textFormat;
-            }
-        }
+
         bool DocumentTabsOverflow
         {
             get { return windowListButton.Overflowed; }
@@ -420,7 +401,7 @@ namespace LazyBones.UI.Controls.Docking
             if (DockGrid.ActiveContent == tab.Content)
                 g.DrawPath(SystemPens.GrayText, path);
 
-            TextRenderer.DrawText(g, tab.Content.Handler.TabText, TextFont, textRect, textColor, ToolWindowTextFormat);
+            TextRenderer.DrawText(g, tab.Content.Handler.TabText, TextFont, textRect, textColor, textFormat);
 
             if (Appearance == AppearanceStyle.ToolWindow || DockGrid.DockPanel.DocumentIconVisible)
                 g.DrawIcon(tab.Content.Handler.Icon, iconRect);

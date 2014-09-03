@@ -91,7 +91,7 @@ namespace LazyBones.UI.Controls.Docking
         }
         protected internal override int CaptionHeight
         {
-            get { return Math.Max(TextFont.Height + TextMargin.Vertical, closeButton.Bmp.Height + TextMargin.Vertical); }
+            get { return Math.Max(TextFont.Height + TextMargin.Vertical, closeButton.BackgroundImage.Height + TextMargin.Vertical); }
         }
         bool CloseButtonEnabled
         {
@@ -178,16 +178,13 @@ namespace LazyBones.UI.Controls.Docking
             closeButton.Visible = CloseButtonVisible;
             autoHideButton.Visible = AutoHideButtonVisible;
             optionsButton.Visible = HasTabPageContextMenu;
-            closeButton.RefreshChanges();
-            autoHideButton.RefreshChanges();
-            optionsButton.RefreshChanges();
             SetButtonsPosition();
         }
         void SetButtonsPosition()
         {
             Rectangle rectCaption = ClientRectangle;
-            int buttonWidth = closeButton.Bmp.Width;
-            int buttonHeight = closeButton.Bmp.Height;
+            int buttonWidth = closeButton.BackgroundImage.Width;
+            int buttonHeight = closeButton.BackgroundImage.Height;
             int height = ClientSize.Height - ButtonMargin.Vertical - 2;
             if (height < 4)
                 height = 4;

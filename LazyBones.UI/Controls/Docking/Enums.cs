@@ -69,7 +69,11 @@ namespace LazyBones.UI.Controls.Docking
         ToolWindow,
         Document
     }
-
+    public enum DockGridStripPosition
+    { 
+        Top,
+        Bottom
+    }
     public enum HitTestArea
     {
         Caption,

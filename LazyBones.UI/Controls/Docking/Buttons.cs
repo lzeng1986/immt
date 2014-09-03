@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Drawing;
-using System.Drawing.Imaging;
+using System.Windows.Forms;
 
 namespace LazyBones.UI.Controls.Docking
 {
